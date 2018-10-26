@@ -36,7 +36,14 @@ app.on('ready', () => {
     const nt = new Notification({
       title: 'Notification API',
       body: `${Date.now()}`,
-      sound: 'Basso.aiff'
+      sound: 'Basso.aiff',
+      actions: [{
+        type: 'button',
+        text: 'hello'
+      }, {
+        type: 'button',
+        text: 'gun'
+      }]
     })
     nt.show()
   }
