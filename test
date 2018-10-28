@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-if [[ $env == "staging" ]]
-then
-    echo 'yes'
-fi
