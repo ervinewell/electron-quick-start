@@ -1,6 +1,5 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain, Notification} = require('electron')
-const notifier = require('node-notifier')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -23,8 +22,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-
-  mainWindow.on('show', console.log)
 }
 
 // This method will be called when Electron has finished
@@ -49,16 +46,7 @@ app.on('ready', () => {
     })
     nt.show()
   }
-
-  // use node-notifier
-  const nodeNotifier = () => {
-    notifier.notify({
-      title: 'nodeNotifier',
-      message: `${Date.now()}`
-    })
-  }
   ipcMain.on('native-notification', nativeNotifier)
-  ipcMain.on('node-notifier-notification', nodeNotifier)
 })
 
 // Quit when all windows are closed.
@@ -71,7 +59,6 @@ app.on('window-all-closed', function () {
 })
 
 app.on('activate', function () {
-  console.log('--------------------')
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
